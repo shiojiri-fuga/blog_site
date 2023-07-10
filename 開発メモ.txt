@@ -1,13 +1,3 @@
-mysql
-サーバー起動コマンド　net start mysql80
-接続コマンドmysql -u root -p
-パスワードfuga1215
-ホスト localhost
-ポート 3306
-ユーザー名root
-データベース名 blog_site
-CREATE DATABASE blog_site;
-
 開発サーバー起動コマンド
 cd C:\Users\user\Desktop\blog_site
 myenv\Scripts\activate
@@ -19,15 +9,25 @@ myenv\Scripts\activate
 cd C:\Users\user\Desktop\blog_site\frontend
 npm run start
 
+python
+cd C:\Users\user\Desktop\blog_site
+仮想環境に入るコマンド　myenv\Scripts\activate
+仮想環境に出るコマンド　deactivate
+
 データベース関係
 //model作成後
 migrationの作成　python manage.py makemigrations backend
 migrateの実行　python manage.py migrate
 
-python
-cd C:\Users\user\Desktop\blog_site
-仮想環境に入るコマンド　myenv\Scripts\activate
-仮想環境に出るコマンド　deactivate
+mysql
+サーバー起動コマンド　net start mysql80
+接続コマンドmysql -u root -p
+パスワードfuga1215
+ホスト localhost
+ポート 3306
+ユーザー名root
+データベース名 blog_site
+CREATE DATABASE blog_site;
 
 サイト作成コマンド
 $ django-admin startproject config .
@@ -63,17 +63,3 @@ Username admin
 Email admin@gmail.com
 Password admin
 
-npm install formik
-npm install yup
-npm install axios
-npm install react-router-dom
-npm install redux react-redux
-npm install reselect
-npm install immer
-npm install normalizr
-npm install @reduxjs/toolkit
-npm install react-cookie
-
-git submodule deinit -f frontend
-git rm -f frontend
-rm -rf .git/modules/frontend 

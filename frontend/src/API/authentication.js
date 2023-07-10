@@ -11,10 +11,13 @@ const client = axios.create({
   },
 });
 
-const csrftoken = getCookie('csrftoken');
+// const csrftoken = getCookie('csrftoken');
 
 // client.defaults.headers.common['X-CSRFToken'] = csrftoken;
 
+export function createUser(values) {
+  return client.post('/api/auth/users/', values);
+}
 
 export function login(email, password) {
   return client.post('/api/login', { email, password });

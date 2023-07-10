@@ -26,6 +26,7 @@ class ActivationEmail(EmailManager):
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.DJOSER["ACTIVATION_URL"].format(**context)
+        context["protocal"] = settings.PROTOCOL
         return context
     
 class ConfirmationEmail(EmailManager):
@@ -47,6 +48,7 @@ class PasswordResetEmail(BaseEmailMessage):
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.DJOSER["PASSWORD_RESET_CONFIRM_URL"].format(**context)
+        context["protocal"] = settings.PROTOCOL
         return context
     
 class PasswordChangedConfirmationEmail(BaseEmailMessage):
@@ -68,6 +70,7 @@ class UsernameResetEmail(BaseEmailMessage):
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.DJOSER["PASSWORD_RESET_CONFIRM_URL"].format(**context)
+        context["protocal"] = settings.PROTOCOL
         return context
     
 class UsernameChangedConfirmationEmail(BaseEmailMessage):
