@@ -8,7 +8,7 @@ export const PCRouter = () => {
   return (
     <Routes>
       <Route path="/signup" element={<SignupForm />}/>
-      <Route path="/activation_user" element={<ActivaionUser />} />
+      <Route path="/activation-user" element={<ActivaionUser />} />
       <Route path="/login" element={<LoginForm />}/>
       <Route path="/home" element={<Home />} />
     </Routes>

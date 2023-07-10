@@ -11,12 +11,16 @@ const client = axios.create({
   },
 });
 
-// const csrftoken = getCookie('csrftoken');
+const csrftoken = getCookie('csrftoken');
 
-// client.defaults.headers.common['X-CSRFToken'] = csrftoken;
+client.defaults.headers.common['X-CSRFToken'] = csrftoken;
 
 export function createUser(values) {
   return client.post('/api/auth/users/', values);
+}
+
+export function resendActivation(value) {
+  return client.post('/api/auth/users/resend_activation/', value);
 }
 
 export function login(email, password) {
@@ -30,13 +34,6 @@ export function refreshToken(refresh) {
 export function verifyToken(token) {
   return client.post('/api/auth/token/verify/', { token });
 }
-
-export function verifyToken(value) {
-  return client.post('/api/auth/users/resend_activation/', { token });
-}
-
-
-
 
 
 function getCookie(name) {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../../../action/authActions';
+import { useNavigate  } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { createUser } from '../../../API/authentication';
-const SignupForm = () => {
 
-  const dispatch = useDispatch()
+const SignupForm = () => {
+  const [setCookie] = useCookies([]);
+  const navigate = useNavigate ();
 
   // フォームの初期値
   const initialValues = {
@@ -31,15 +31,9 @@ const SignupForm = () => {
   // フォームの送信ハンドラ
   const HandleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = createUser(values);
-      console.log(response);
-      // console.log('response');
-      // 新規作成成功時の処理（ユーザー情報の保存など）
-      // const user = response.data;
-      // ログイン成功時の処理（認証トークンの保存など）
-      // ログインAPIなどの非同期処理が成功した場合
-      // console.log(user);
-      // dispatch(loginSuccess(user));
+      // const response = createUser(values);
+      // setCookie('activate_user', response.data.id)
+      navigate('/activation-user');
     } catch (error) {
       // ログイン失敗時の処理
       console.error('ログイン失敗:', error);
