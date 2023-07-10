@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'; // 追加
+import store from './store'; // 追加
+import { useMediaQuery } from 'react-responsive';
+import PCMain from './components/pc/PCMain';
+import MobileMain from './components/mobile/MobileMain';
 
-function App() {
+const App = () => {
+  // 画面幅に応じて適切なコンテナコンポーネントを選択
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <>
+          {isMobile ? (
+            <MobileMain />
+          ) : (
+            <PCMain/>
+          )}
+        </>
+      </BrowserRouter>
+    </Provider>
   );
-}
+};
 
 export default App;
