@@ -28,6 +28,12 @@ export function verifyToken(token) {
   return client.post('/api/auth/token/verify/', { token });
 }
 
+export function verifyToken(value) {
+  return client.post('/api/auth/users/resend_activation/', { token });
+}
+
+
+
 
 
 function getCookie(name) {
