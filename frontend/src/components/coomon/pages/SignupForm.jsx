@@ -5,8 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../../action/authActions';
-import { fetchDate, createDate, editDate, deleteDate } from '../../../API';
-
+import { createUser } from '../../../API/authentication';
 const SignupForm = () => {
 
   const dispatch = useDispatch()
@@ -16,7 +15,7 @@ const SignupForm = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    re_password: '',
   };
 
   // バリデーションスキーマの定義
@@ -24,7 +23,7 @@ const SignupForm = () => {
     name: Yup.string().max(20, '名前は20文字以内で入力してください').required('名前は必須です'),
     email: Yup.string().email('有効なメールアドレスを入力してください').required('メールアドレスは必須です'),
     password: Yup.string().required('パスワードは必須です'),
-    confirmPassword: Yup.string()
+    re_password: Yup.string()
       .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
       .required('確認用パスワードは必須です'),
   });
@@ -32,15 +31,15 @@ const SignupForm = () => {
   // フォームの送信ハンドラ
   const HandleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = createDate('/api/user', values);
+      const response = createUser(values);
       console.log(response);
-      console.log('response');
+      // console.log('response');
       // 新規作成成功時の処理（ユーザー情報の保存など）
-      const user = response.data;
+      // const user = response.data;
       // ログイン成功時の処理（認証トークンの保存など）
       // ログインAPIなどの非同期処理が成功した場合
-      console.log(user);
-      dispatch(loginSuccess(user));
+      // console.log(user);
+      // dispatch(loginSuccess(user));
     } catch (error) {
       // ログイン失敗時の処理
       console.error('ログイン失敗:', error);
@@ -74,8 +73,8 @@ const SignupForm = () => {
 
           <FormGroup>
             <label htmlFor="password">確認用パスワード</label>
-            <Field type="confirmPassword" id="confirmPassword" name="confirmPassword" />
-            <ErrorMessage name="confirmPassword" component={ErrorMessageContainer} />
+            <Field type="re_password" id="re_password" name="re_password" />
+            <ErrorMessage name="re_password" component={ErrorMessageContainer} />
           </FormGroup>
 
           <SubmitButton type="submit">新規作成</SubmitButton>
