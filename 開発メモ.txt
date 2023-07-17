@@ -60,6 +60,8 @@ npm install immer
 npm install normalizr
 npm install @reduxjs/toolkit
 npm install react-cookie
+npm install react-slick --save
+npm install slick-carousel
 
 ユーザー
 スーパーユーザー作成　python manage.py createsuperuser
