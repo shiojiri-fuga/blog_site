@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -11,5 +12,21 @@ const Container = styled.div`
     border-radius: 4px;
 `;
 
+const BaseButton = styled.button`
+    border-bottom: 5px solid #9f000c;
+    border-radius: 100vh;
+    margin-top: 10px;
 
-export { Container };
+    &:hover {
+        margin-top: 13px;
+        border-bottom: 2px solid #9f000c;
+    }
+`;
+
+
+const BaseLink = styled(Link)`
+    margin-10px;
+`;
+
+
+export { Container, BaseButton, BaseLink };

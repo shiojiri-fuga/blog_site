@@ -7,7 +7,6 @@ import { useCookies } from 'react-cookie';
 import { createUser } from '../../../API/authentication';
 
 const SignupForm = () => {
-  const [setCookie] = useCookies([]);
   const navigate = useNavigate ();
 
   // フォームの初期値
@@ -22,7 +21,12 @@ const SignupForm = () => {
   const validationSchema = Yup.object({
     name: Yup.string().max(20, '名前は20文字以内で入力してください').required('名前は必須です'),
     email: Yup.string().email('有効なメールアドレスを入力してください').required('メールアドレスは必須です'),
-    password: Yup.string().required('パスワードは必須です'),
+    password: Yup.string()
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+      'パスワードは英数字大文字小文字を含む8文字以上で入力してください'
+    )
+    .required('パスワードは必須です'),
     re_password: Yup.string()
       .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
       .required('確認用パスワードは必須です'),
@@ -31,12 +35,11 @@ const SignupForm = () => {
   // フォームの送信ハンドラ
   const HandleSubmit = async (values, { setSubmitting }) => {
     try {
-      // const response = createUser(values);
-      // setCookie('activate_user', response.data.id)
+      await createUser(values);
       navigate('/activation-user');
     } catch (error) {
       // ログイン失敗時の処理
-      console.error('ログイン失敗:', error);
+      console.error('登録失敗:', error);
     } finally {
       setSubmitting(false);
     }

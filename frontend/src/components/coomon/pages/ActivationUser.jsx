@@ -1,25 +1,32 @@
 import React, {useState} from 'react';
 import { resendActivation } from '../../../API/authentication';
-import { Container } from '../styles/style';
+import { Container, BaseButton } from '../styles/style';
 import { postRequest } from '../../../API';
-import { Link } from 'react-router-dom';
 
 
 const ActivationUser = () => {
 
     const [email, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     
-    const handleResendEmail = () => {
-        const date = { 'email': email}
-        const response = postRequest('/api/checkEmail/', date);
-        if (window.confirm('本当にメールを再送信しますか？')) {
-            // メール再送信の処理を実装する
-            // API呼び出しや適切なロジックを追加してください
-            console.log('メール再送信:', email);
+    const handleResendEmail = async () => {
+      if (window.confirm('本当にメールを再送信しますか？')) {
+        const data = {'email': email}
+        try {
+          const response = await postRequest('/api/checkEmail/', data);
+          if (response.data.status === 'ok') {
+            resendActivation(data)
+            setIsButtonDisabled(true); // ボタン無効化
+            setTimeout(() => setIsButtonDisabled(false), 300000); // 5分後にボタンを有効化
+            setErrorMessage('メール再送信後は5分間に再送信はできません')
+          } else {
+            setErrorMessage('メールアドレスをご確認ください');
+          }
+        } catch (error) {
+          setErrorMessage('エラーが発生しました');
         }
-      // メール再送信の処理を実装する
-      // API呼び出しや適切なロジックを追加してください
-      console.log('メール再送信:', email);
+      }
     };
     
     const handleChangeEmail = (event) => {
@@ -31,10 +38,11 @@ const ActivationUser = () => {
         <h1>仮登録が完了しました</h1>
         <p>本登録を完了するために、メールをご確認ください。</p>
         <p>メールに記載されたリンクをクリックして本登録を行ってください。</p>
-        <p>メール再送信用のメールアドレスを入力してください:</p>
-        <input type="email" value={email} onChange={handleChangeEmail} />
-        <button onClick={handleResendEmail}>メール再送信</button>
-        <Link to="/login">ログインページへ</Link>
+        <p>メールが届かない方は下記に再度メールアドレスを入力して<br/>
+          メール再送信用ボタンからメールの再送信を入力してください。</p>
+        <input type="email" placeholder='メールアドレス' value={email} onChange={handleChangeEmail} />
+        {errorMessage && <p>{errorMessage}</p>}
+        <BaseButton disabled={isButtonDisabled} onClick={handleResendEmail}>メール再送信</BaseButton>
       </Container>
     );
 };
