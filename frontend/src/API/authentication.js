@@ -11,26 +11,35 @@ const client = axios.create({
   },
 });
 
-// const csrftoken = getCookie('csrftoken');
+const csrftoken = getCookie('csrftoken');
 
-// client.defaults.headers.common['X-CSRFToken'] = csrftoken;
+client.defaults.headers.common['X-CSRFToken'] = csrftoken;
 
+// ユーザー新規作成と仮登録完了
 export function createUser(values) {
   return client.post('/api/auth/users/', values);
 }
 
+//本登録完了
+export function userActivation(values) {
+  return client.post('/api/auth/users/activation/', values)
+}
+//本登録用メール再送
+export function resendActivation(value) {
+  return client.post('/api/auth/users/resend_activation/', value);
+}
+//ログイン
 export function login(email, password) {
   return client.post('/api/login', { email, password });
 }
-
+//リフレッシュトークン
 export function refreshToken(refresh) {
   return client.post('/api/auth/token/refresh/', { refresh });
 }
-
+//
 export function verifyToken(token) {
   return client.post('/api/auth/token/verify/', { token });
 }
-
 
 
 function getCookie(name) {

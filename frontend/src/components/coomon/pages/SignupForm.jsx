@@ -1,14 +1,13 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../../../action/authActions';
+import { useNavigate  } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { createUser } from '../../../API/authentication';
-const SignupForm = () => {
 
-  const dispatch = useDispatch()
+const SignupForm = () => {
+  const navigate = useNavigate ();
 
   // フォームの初期値
   const initialValues = {
@@ -22,7 +21,12 @@ const SignupForm = () => {
   const validationSchema = Yup.object({
     name: Yup.string().max(20, '名前は20文字以内で入力してください').required('名前は必須です'),
     email: Yup.string().email('有効なメールアドレスを入力してください').required('メールアドレスは必須です'),
-    password: Yup.string().required('パスワードは必須です'),
+    password: Yup.string()
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+      'パスワードは英数字大文字小文字を含む8文字以上で入力してください'
+    )
+    .required('パスワードは必須です'),
     re_password: Yup.string()
       .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
       .required('確認用パスワードは必須です'),
@@ -31,18 +35,11 @@ const SignupForm = () => {
   // フォームの送信ハンドラ
   const HandleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = createUser(values);
-      console.log(response);
-      // console.log('response');
-      // 新規作成成功時の処理（ユーザー情報の保存など）
-      // const user = response.data;
-      // ログイン成功時の処理（認証トークンの保存など）
-      // ログインAPIなどの非同期処理が成功した場合
-      // console.log(user);
-      // dispatch(loginSuccess(user));
+      await createUser(values);
+      navigate('/activation-user');
     } catch (error) {
       // ログイン失敗時の処理
-      console.error('ログイン失敗:', error);
+      console.error('登録失敗:', error);
     } finally {
       setSubmitting(false);
     }

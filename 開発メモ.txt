@@ -19,6 +19,10 @@ cd C:\Users\user\Desktop\blog_site
 migrationの作成　python manage.py makemigrations backend
 migrateの実行　python manage.py migrate
 
+staticファイルの更新と収集
+npm run build　frontendで実行
+python manage.py collectstatic blog_siteで実行
+
 mysql
 サーバー起動コマンド　net start mysql80
 接続コマンドmysql -u root -p
