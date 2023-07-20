@@ -96,7 +96,6 @@ const UserInfo = styled.div`
   padding: 0px 32px 0px 32px;
   justify-content: flex-end;
   align-items: flex-end;
-  gap: 17px;
 `;
 
 const UserInfoButton = styled.button`

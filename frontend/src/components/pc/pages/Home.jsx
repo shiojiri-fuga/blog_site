@@ -1,14 +1,85 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
 import { Content } from '../styles/CommonContainer';
-import { HeroContainer } from '../styles/HomeContainer';
+import Hero from '../components/Hero';
+import Grid from '@mui/material/Grid'
+import { Text } from '../styles/CommonContainer';
+import styled from 'styled-components';
+import HomeSearchGame from '../components/HomeSearchGame';
+import { TitleComponent, ParallaxTitleConmponent } from '../styles/title';
+
+
+
+
+
+
 const Home = () => {
+
+  const images = [
+    'http://localhost:8000/images/hero1.jpg',
+    'http://localhost:8000/images/hero1.jpg',
+    'http://localhost:8000/images/hero1.jpg',
+    'http://localhost:8000/images/hero1.jpg',
+  ];
+
   return (
     <Content>
-      <HeroContainer>
-        <h1>Home Page</h1>
-        <p>Welcome to the Home page!!!</p>
-      </HeroContainer>
-    </Content>
+      <Hero/>
+      <Grid  container
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+        <Grid item md={5}>  
+        <TitleComponent text={'お知らせ'}/>
+        </Grid>
+        <Grid item md={8}>
+          <Grid container
+            direction="row"
+            justifyContent="center"
+            alignContent="center">
+            <Grid item md={2}><Text>2023/07/12</Text></Grid>
+            <Grid item md={10}><Text>新しいイベントの告知があります</Text></Grid>
+            <Grid item md={2}><Text>2023/07/12</Text></Grid>
+            <Grid item md={10}><Text>新しいイベントの告知があります</Text></Grid>
+            <Grid item md={2}><Text>2023/07/12</Text></Grid>
+            <Grid item md={10}><Text>新しいイベントの告知があります</Text></Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Parallax
+          bgImage={images[0]}
+          strength={500}
+          style={{ height: '400px' }}
+        >
+        <ParallaxTitleConmponent text={'ボードゲームを探す'}/> 
+      </Parallax>
+      <HomeSearchGame/>
+      <Parallax
+          bgImage={images[0]}
+          strength={500}
+          style={{ height: '400px' }}
+        >
+        <ParallaxTitleConmponent text={'新着のボードゲーム'}/> 
+      </Parallax>
+      
+      <Parallax
+          bgImage={images[0]}
+          strength={500}
+          style={{ height: '400px' }}
+        >
+        <ParallaxTitleConmponent text={'イベント情報'}/> 
+      </Parallax>
+      
+      <Parallax
+          bgImage={images[0]}
+          strength={500}
+          style={{ height: '400px' }}
+        >
+        <ParallaxTitleConmponent text={'新着のブログ'}/> 
+      </Parallax>
+      
+      
+      </Content>
   );
 };
 

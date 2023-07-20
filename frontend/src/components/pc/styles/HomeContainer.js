@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
+const Component = styled.div`
+ `;
 
-const HeroContainer = styled.div`
-    display: flex;
-    height: 400px;
-`;
-
-export { HeroContainer };
+export { Component };
