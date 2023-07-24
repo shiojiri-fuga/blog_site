@@ -6,12 +6,10 @@ import Grid from '@mui/material/Grid'
 import { Text } from '../styles/CommonContainer';
 import styled from 'styled-components';
 import HomeSearchGame from '../components/HomeSearchGame';
+import HomeNewGame from '../components/HomeNewGame';
+import HomeNewBlog from '../components/HomeNewBlog';
+import HomeNewEvent from '../components/HomeNewEvent';
 import { TitleComponent, ParallaxTitleConmponent } from '../styles/title';
-
-
-
-
-
 
 const Home = () => {
 
@@ -28,7 +26,8 @@ const Home = () => {
       <Grid  container
         direction="row"
         justifyContent="center"
-        alignItems="center">
+        alignItems="center"
+        paddingTop="16px">
         <Grid item md={5}>  
         <TitleComponent text={'お知らせ'}/>
         </Grid>
@@ -36,7 +35,9 @@ const Home = () => {
           <Grid container
             direction="row"
             justifyContent="center"
-            alignContent="center">
+            alignContent="center"
+            paddingBottom="32px"
+            >
             <Grid item md={2}><Text>2023/07/12</Text></Grid>
             <Grid item md={10}><Text>新しいイベントの告知があります</Text></Grid>
             <Grid item md={2}><Text>2023/07/12</Text></Grid>
@@ -61,7 +62,7 @@ const Home = () => {
         >
         <ParallaxTitleConmponent text={'新着のボードゲーム'}/> 
       </Parallax>
-      
+      <HomeNewGame/>
       <Parallax
           bgImage={images[0]}
           strength={500}
@@ -69,7 +70,7 @@ const Home = () => {
         >
         <ParallaxTitleConmponent text={'イベント情報'}/> 
       </Parallax>
-      
+      <HomeNewEvent/>
       <Parallax
           bgImage={images[0]}
           strength={500}
@@ -77,7 +78,7 @@ const Home = () => {
         >
         <ParallaxTitleConmponent text={'新着のブログ'}/> 
       </Parallax>
-      
+      <HomeNewBlog />
       
       </Content>
   );

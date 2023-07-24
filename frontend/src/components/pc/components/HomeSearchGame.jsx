@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import AgeSearchComponent from './AgeSearchComponent';
 import styled from 'styled-components';
 import { ImageButtonComponent } from '../styles/Button';
@@ -38,6 +37,10 @@ const HomeSearchGame = () => {
   // 一覧を選択した場合の処理
   const handleListSearch = () => {
     navigate('/list'); // 一覧画面に遷移
+  };
+
+  const handleBack = () => {
+    setSearchType('home');
   };
 
   // 検索ボタンがクリックされた場合の処理
@@ -77,11 +80,11 @@ const HomeSearchGame = () => {
                 }
 
                 {/* 検索項目に応じて表示を切り替えるコンポーネント */}
-                {searchType === 'age' && <AgeSearchComponent onSearch={handleSearch} />}
-                {searchType === 'players' && <AgeSearchComponent onSearch={handleSearch} />}
-                {searchType === 'playtime' && <AgeSearchComponent onSearch={handleSearch} />}
-                {searchType === 'genre' && <AgeSearchComponent onSearch={handleSearch} />}
-                {searchType === 'keyword' && <AgeSearchComponent onSearch={handleSearch} />}
+                {searchType === 'age' && <AgeSearchComponent onSearch={handleSearch} onBack={handleBack} />}
+                {searchType === 'players' && <AgeSearchComponent onSearch={handleSearch} onBack={handleBack} />}
+                {searchType === 'playtime' && <AgeSearchComponent onSearch={handleSearch} onBack={handleBack} />}
+                {searchType === 'genre' && <AgeSearchComponent onSearch={handleSearch} onBack={handleBack} />}
+                {searchType === 'keyword' && <AgeSearchComponent onSearch={handleSearch} onBack={handleBack} />}
             </Grid>
             <Grid item md={2}></Grid>
         </Grid>
