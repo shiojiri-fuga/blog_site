@@ -14,7 +14,7 @@ export const PCRouter = () => {
       <Route path="/activate/:uid/:token" element={<RegistrationConfirmation />} />
       <Route path="registration-completed" element={<RegistrationCompleted/>} />
       <Route path="/login" element={<LoginForm />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 };
