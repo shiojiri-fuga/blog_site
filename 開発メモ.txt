@@ -69,6 +69,6 @@ npm install react-parallax --save
 ユーザー
 スーパーユーザー作成　python manage.py createsuperuser
 Username admin
-Email admin@gmail.com
+Email admin@sample.com
 Password admin
 

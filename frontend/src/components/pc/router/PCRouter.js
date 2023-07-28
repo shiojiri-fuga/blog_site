@@ -5,6 +5,7 @@ import RegistrationConfirmation from "../../coomon/pages/RegistrationConfirmatio
 import ActivaionUser from "../../coomon/pages/ActivationUser";
 import RegistrationCompleted from "../../coomon/pages/RegistrationCompleted";
 import Home from "../pages/Home";
+import GamePreview from "../pages/GamePreview";
 
 export const PCRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const PCRouter = () => {
       <Route path="registration-completed" element={<RegistrationCompleted/>} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/" element={<Home />} />
+      <Rote path="/blog_preview:id" element={GamePreview}/>
     </Routes>
   );
 };
