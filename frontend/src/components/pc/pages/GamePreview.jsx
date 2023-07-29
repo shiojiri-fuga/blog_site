@@ -11,7 +11,7 @@ import HomeNewBlog from '../components/HomeNewBlog';
 import HomeNewEvent from '../components/HomeNewEvent';
 import { TitleComponent, ParallaxTitleConmponent } from '../styles/title';
 
-const Home = () => {
+const GamePreview = () => {
 
   const images = [
     'http://localhost:8000/images/hero1.jpg',
@@ -84,4 +84,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default GamePreview;

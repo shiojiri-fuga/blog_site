@@ -16,7 +16,7 @@ export const PCRouter = () => {
       <Route path="registration-completed" element={<RegistrationCompleted/>} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/" element={<Home />} />
-      <Rote path="/blog_preview:id" element={GamePreview}/>
+      <Route path="/blog-preview/:id" element={<GamePreview />} />
     </Routes>
   );
 };

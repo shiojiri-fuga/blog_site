@@ -34,7 +34,8 @@ class BlogAdmin(admin.ModelAdmin):
         if obj is None:
             return ''  # objがNoneの場合はボタンを表示しない
         obj.save()
-        url = reverse("admin:blog_preview", args=[obj.pk])
+        # url = reverse("admin:blog_preview", args=[obj.pk])
+        url = "/blog-preview/" + str(obj.pk)
         return mark_safe(f'<a href="{url}" target="_blank">プレビュー</a>')
     preview_button.short_description = 'プレビュー'
 

@@ -15,4 +15,5 @@ urlpatterns = [
 
 urlpatterns += staticfiles_urlpatterns() # 追加
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # 追加
-# urlpatterns += re_path(r'^(?!api|admin).*$', TemplateView.as_view(template_name='index.html'), name='home')
+urlpatterns += [re_path(r'^.*$', TemplateView.as_view(template_name='index.html'))]
+
