@@ -46,6 +46,7 @@ pip install djangorestframework restfullのパッケージ
 pip install djoser ログイン関係に使われているパッケージ
 pip install djangorestframework_simplejwt 認証用のパッケージ
 pip install mysqlclien mysqlに接続パッケージ
+pip install pillow 画像保存
 
 react
 npm install styled-components Cssのパッケージ

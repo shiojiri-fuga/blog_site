@@ -8,7 +8,7 @@ class Blog(models.Model):
     author = models.CharField(max_length=100)
     category = models.CharField(max_length=50)
     tags = models.CharField(max_length=200)
-    thumbnail_image = models.URLField()
+    thumbnail_image = models.ImageField()
     likes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)

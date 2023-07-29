@@ -6,6 +6,9 @@ from .forms.Blogform import BlogForm
 from django.utils.safestring import mark_safe
 from django.urls import path, reverse  #追加
 from . import views
+from django.utils.html import format_html
+from django.forms import TextInput
+from django.db import models
 # from .models.user import UserAccount
 
 User = get_user_model()
@@ -22,13 +25,13 @@ class BlogAdminForm(BlogForm):
 class BlogAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
-    def get_urls(self):
-        urls = super().get_urls()  # defaultのadmin urlをロード
+    # def get_urls(self):
+    #     urls = super().get_urls()  # defaultのadmin urlをロード
         
-        detail_urls = [
-           path('blog_preview/<int:blog_id>/',self.admin_site.admin_view(views.blog_preview), name='blog_preview')
-        ]
-        return detail_urls + urls 
+    #     detail_urls = [
+    #        path('blog_preview/<int:blog_id>/',self.admin_site.admin_view(views.blog_preview), name='blog_preview')
+    #     ]
+    #     return detail_urls + urls 
 
     def preview_button(self, obj=None):
         if obj is None:
