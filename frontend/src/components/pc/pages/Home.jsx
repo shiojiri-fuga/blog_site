@@ -4,7 +4,6 @@ import { Content } from '../styles/CommonContainer';
 import Hero from '../components/Hero';
 import Grid from '@mui/material/Grid'
 import { Text } from '../styles/CommonContainer';
-import styled from 'styled-components';
 import HomeSearchGame from '../components/HomeSearchGame';
 import HomeNewGame from '../components/HomeNewGame';
 import HomeNewBlog from '../components/HomeNewBlog';
