@@ -41,3 +41,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    class Meta:
+        db_table = 'user_accounts'
+        verbose_name = 'ユーザー'
+        verbose_name_plural = 'ユーザー'
