@@ -1,15 +1,12 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth import get_user_model
-from .models.BlogModel import Blog
-from .forms.Blogform import BlogForm
 from django.utils.safestring import mark_safe
-from django.urls import path, reverse  #追加
-from . import views
-from django.utils.html import format_html
-from django.forms import TextInput
-from django.db import models
-# from .models.user import UserAccount
+from .models.BlogModel import Blog
+from .forms.BlogForm import BlogForm
+from .models.ProductDescriptionModel import ProductDescription
+from .forms.ProductDescriptionForm import ProductDescriptionForm
+
 
 User = get_user_model()
 class CustomAdminSite(AdminSite):
@@ -25,19 +22,10 @@ class BlogAdminForm(BlogForm):
 class BlogAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
-    # def get_urls(self):
-    #     urls = super().get_urls()  # defaultのadmin urlをロード
-        
-    #     detail_urls = [
-    #        path('blog_preview/<int:blog_id>/',self.admin_site.admin_view(views.blog_preview), name='blog_preview')
-    #     ]
-    #     return detail_urls + urls 
-
     def preview_button(self, obj=None):
         if obj is None:
             return ''  # objがNoneの場合はボタンを表示しない
         obj.save()
-        # url = reverse("admin:blog_preview", args=[obj.pk])
         url = "/blog-preview/" + str(obj.pk)
         return mark_safe(f'<a href="{url}" target="_blank">プレビュー</a>')
     preview_button.short_description = 'プレビュー'
@@ -46,3 +34,12 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'category', 'tags', 'preview_button')
 
 admin.site.register(Blog, BlogAdmin)
+
+class ProductDescriptionAdminForm(ProductDescriptionForm):
+    class Meta(ProductDescriptionForm.Meta):
+        model = ProductDescription
+
+class ProductDescriptionAdmin(admin.ModelAdmin):
+    form = ProductDescriptionAdminForm
+
+admin.site.register(ProductDescription, ProductDescriptionAdmin)

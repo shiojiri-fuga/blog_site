@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'accounts',
     'backend',
     'frontend',
-    'corsheaders'
+    'corsheaders',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -262,6 +263,30 @@ CSRF_COOKIE_HTTPONLY = True
 # CSRFトークンをJavaScriptからアクセス可能にするための設定
 CSRF_COOKIE_SAMESITE = 'Strict'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': 800,
+    },
+}
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'WARNING',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
+            'class': 'logging.FileHandler',  # ログをファイルに出力するためのハンドラ
+            'filename': 'django.log',  # ログファイル名
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],  # ハンドラを指定してログを出力
+            'level': 'WARNING',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
+            'propagate': True,
+        },
+    },
+}
 
