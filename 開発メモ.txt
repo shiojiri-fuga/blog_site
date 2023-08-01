@@ -47,6 +47,7 @@ pip install djoser ログイン関係に使われているパッケージ
 pip install djangorestframework_simplejwt 認証用のパッケージ
 pip install mysqlclien mysqlに接続パッケージ
 pip install pillow 画像保存
+pip install django-ckeditor htmlエディター
 
 react
 npm install styled-components Cssのパッケージ
@@ -65,6 +66,7 @@ npm install react-slick --save
 npm install slick-carousel
 npm install @mui/material @emotion/react @emotion/styled
 npm install react-parallax --save
+npm i html-react-parser
 
 
 ユーザー

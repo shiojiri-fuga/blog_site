@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from django.conf.urls import include
+from rest_framework import routers
+from .views.BlogView import BlogPreviewView
 
-# urlpatterns = [
-#     # 他のURLパターン
-#     path('blog_preview/<int:blog_id>/', views.blog_preview, name='blog_preview'),
-# ]
+router = routers.DefaultRouter()
+
+urlpatterns = [
+    path('get-blog-preview/<int:pk>/', BlogPreviewView.as_view()),
+]

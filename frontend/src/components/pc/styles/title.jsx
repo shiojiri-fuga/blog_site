@@ -6,12 +6,7 @@ const TitleComponent = ({ text }) => {
     return <Title>{text}</Title>;
   };
 
-const Title = styled.div`
-  margin: 24px;
-  color: #22B465;
-  font-size: 56px;
-  text-align: center;
-`;
+
 
 const ParallaxTitleConmponent = ({ text }) => {
     // Component変数に格納したコンポーネントでReact要素を作成
@@ -21,6 +16,29 @@ const ParallaxTitleConmponent = ({ text }) => {
         </TitleContainer>
     );
   };
+
+const BlogTitleComponent = ({ text }) => {
+  return ( 
+    <BlogTitle>{text}</BlogTitle>
+  );
+};
+
+const Title = styled.div`
+  margin: 24px;
+  color: #22B465;
+  font-size: 56px;
+  text-align: center;
+`;
+
+const BlogTitle = styled.div`
+  padding: 0.4em 0.5em;
+  color: #494949;
+  background: #fff;
+  border-left: solid 5px #22B465;
+  border-bottom: solid 3px #494949;
+  min-height: 30px;
+  font-size: 28px
+`;
 
 const ContentTitle = styled.div`
   position: absolute;
@@ -40,4 +58,4 @@ height: 400px;
 `;
 
 
-export { TitleComponent, ParallaxTitleConmponent };
+export { TitleComponent, ParallaxTitleConmponent, BlogTitleComponent };
