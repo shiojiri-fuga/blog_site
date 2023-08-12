@@ -6,12 +6,13 @@ from django.contrib.staticfiles.urls import static # 追加
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns # 追加
 
 urlpatterns = [
-    # path('api/auth/', include('djoser.urls')),
-    # path('api/auth/', include('djoser.urls.jwt')),
-    # path('api/', include('accounts.urls')),
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/', include('accounts.urls')),
     # path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('admin/', admin.site.urls),
     path('api/', include('backend.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns() # 追加

@@ -7,4 +7,4 @@ class BlogForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Blog
-        fields = ['title', 'author', 'category', 'tags', 'thumbnail_image','content', 'published']
+        fields = ['title', 'author', 'category', 'tags', 'thumbnail_image','content', 'photos', 'published']
