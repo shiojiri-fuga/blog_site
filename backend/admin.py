@@ -6,6 +6,8 @@ from .models.BlogModel import Blog
 from .forms.BlogForm import BlogForm
 from .models.ProductDescriptionModel import ProductDescription
 from .forms.ProductDescriptionForm import ProductDescriptionForm
+from .models.PhotoModel import Photo
+from .forms.PhotoForm import PhotoForm
 
 
 User = get_user_model()
@@ -42,4 +44,29 @@ class ProductDescriptionAdminForm(ProductDescriptionForm):
 class ProductDescriptionAdmin(admin.ModelAdmin):
     form = ProductDescriptionAdminForm
 
+
+    def preview_button(self, obj=None):
+        if obj is None:
+            return ''  # objがNoneの場合はボタンを表示しない
+        obj.save()
+        url = "/product-description-preview/" + str(obj.pk)
+        return mark_safe(f'<a href="{url}" target="_blank">プレビュー</a>')
+    preview_button.short_description = 'プレビュー'
+
+    readonly_fields = ['preview_button']
+
+        
+
+
 admin.site.register(ProductDescription, ProductDescriptionAdmin)
+
+class PhotoAdminForm(PhotoForm):
+    class Meta(PhotoForm.Meta):
+        model = Photo
+
+class PhotoAdmin(admin.ModelAdmin):
+    form = PhotoAdminForm
+
+    list_display = ('title', 'url', 'image')
+
+admin.site.register(Photo, PhotoAdmin)

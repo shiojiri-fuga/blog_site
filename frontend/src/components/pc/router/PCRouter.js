@@ -6,6 +6,7 @@ import ActivaionUser from "../../coomon/pages/ActivationUser";
 import RegistrationCompleted from "../../coomon/pages/RegistrationCompleted";
 import Home from "../pages/Home";
 import BlogPreview from "../pages/BlogPreview";
+import ProductDescriptionPreview from "../pages/ProductDescriptionPreview";
 
 export const PCRouter = () => {
   return (
@@ -17,6 +18,7 @@ export const PCRouter = () => {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/" element={<Home />} />
       <Route path="/blog-preview/:id" element={<BlogPreview />} />
+      <Route path="/product-description-preview/:id" element={<ProductDescriptionPreview />} />
     </Routes>
   );
 };
