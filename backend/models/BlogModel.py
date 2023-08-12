@@ -1,5 +1,5 @@
 from django.db import models
-
+from .PhotoModel import Photo
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -13,6 +13,8 @@ class Blog(models.Model):
     views = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
+    photos = models.ManyToManyField(Photo)
+
 
     def __str__(self):
         return self.title
