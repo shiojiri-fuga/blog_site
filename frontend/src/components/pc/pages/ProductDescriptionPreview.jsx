@@ -9,6 +9,7 @@ import TableOfContents from '../styles/Menu';
 import BoardGameInfoTable from '../styles/Table';
 import { ParallaxTitleConmponent } from '../styles/title';
 import { Parallax } from 'react-parallax';
+import SideMenu from '../components/SideMenu';
 
 
 const ProductDescriptionPreview = () => {
@@ -27,10 +28,7 @@ const ProductDescriptionPreview = () => {
 
   useEffect(() => {
     (async() => {
-      console.log(params.id);
       const response = await getRequest(`/api/get-product-description-preview/${params.id}/`);
-      console.log('tt');
-      console.log(response);
       setProductDescription(response.data.data);
       setTocData(response.data.toc)
     })()
@@ -58,7 +56,7 @@ const ProductDescriptionPreview = () => {
           </div>
         </ContentArea>
         <Grid item md={2}>
-          サイドバー
+          <SideMenu />
         </Grid>
         <Grid item md={3}></Grid>
         

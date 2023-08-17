@@ -7,7 +7,6 @@ from rest_framework.permissions import AllowAny
 from bs4 import BeautifulSoup
 
 class ProductDescriptionPreviewView(APIView):
-
     
     permission_classes = [AllowAny]  # ログインなしでアクセス可能に設定
     def get(self, request, pk):
@@ -30,7 +29,6 @@ class ProductDescriptionPreviewView(APIView):
             productDescription = ProductDescription.objects.get(pk=pk)  # idがpkのデータを取得
             serializer = ProductDescriptionSerializer(productDescription)
             toc = generate_toc(productDescription.content)
-            # return Response(serializer.data)
             return Response({'data': serializer.data, 'toc': toc})
         except ProductDescription.DoesNotExist:
             return Response({'message': 'productDescription not found'}, status=status.HTTP_404_NOT_FOUND)

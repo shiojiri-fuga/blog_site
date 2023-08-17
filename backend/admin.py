@@ -8,6 +8,8 @@ from .models.ProductDescriptionModel import ProductDescription
 from .forms.ProductDescriptionForm import ProductDescriptionForm
 from .models.PhotoModel import Photo
 from .forms.PhotoForm import PhotoForm
+from .models.EventModel import Event
+from .forms.EventForm import EventForm
 
 
 User = get_user_model()
@@ -70,3 +72,14 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ('title', 'url', 'image')
 
 admin.site.register(Photo, PhotoAdmin)
+
+class EventAdminForm(EventForm):
+    class Meta(EventForm.Meta):
+        model = Event
+
+class EventAdmin(admin.ModelAdmin):
+    form = EventAdminForm
+
+    list_display = ('title','date')
+
+admin.site.register(Event, EventAdmin)
