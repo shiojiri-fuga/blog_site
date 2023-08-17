@@ -9,7 +9,10 @@ import TableOfContents from '../styles/Menu';
 import BoardGameInfoTable from '../styles/Table';
 import { ParallaxTitleConmponent } from '../styles/title';
 import { Parallax } from 'react-parallax';
+<<<<<<< HEAD
 import SideMenu from '../components/SideMenu';
+=======
+>>>>>>> ca6a59fe1f94056da0fd83238436a4f43ce4fb54
 
 
 const ProductDescriptionPreview = () => {
@@ -28,7 +31,14 @@ const ProductDescriptionPreview = () => {
 
   useEffect(() => {
     (async() => {
+<<<<<<< HEAD
       const response = await getRequest(`/api/get-product-description-preview/${params.id}/`);
+=======
+      console.log(params.id);
+      const response = await getRequest(`/api/get-product-description-preview/${params.id}/`);
+      console.log('tt');
+      console.log(response);
+>>>>>>> ca6a59fe1f94056da0fd83238436a4f43ce4fb54
       setProductDescription(response.data.data);
       setTocData(response.data.toc)
     })()
@@ -56,7 +66,11 @@ const ProductDescriptionPreview = () => {
           </div>
         </ContentArea>
         <Grid item md={2}>
+<<<<<<< HEAD
           <SideMenu />
+=======
+          サイドバー
+>>>>>>> ca6a59fe1f94056da0fd83238436a4f43ce4fb54
         </Grid>
         <Grid item md={3}></Grid>
         
