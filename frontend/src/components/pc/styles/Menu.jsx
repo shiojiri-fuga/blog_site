@@ -58,8 +58,11 @@ const ExpandButton = styled.button`
 
 const TableOfContents = ({tocData}) => {
   const [expanded, setExpanded] = useState(false);
+<<<<<<< HEAD
+=======
   console.log(tocData);
 
+>>>>>>> ca6a59fe1f94056da0fd83238436a4f43ce4fb54
   const toggleExpand = () => {
     setExpanded(!expanded);
   };

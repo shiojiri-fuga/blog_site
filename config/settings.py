@@ -288,7 +288,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'WARNING',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
+            'level': 'INFO',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
             'class': 'logging.FileHandler',  # ログをファイルに出力するためのハンドラ
             'filename': 'django.log',  # ログファイル名
         },
@@ -296,7 +296,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file'],  # ハンドラを指定してログを出力
-            'level': 'WARNING',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
+            'level': 'INFO',  # ログレベルを指定 (DEBUG, INFO, WARNING, ERROR, CRITICAL など)
             'propagate': True,
         },
     },
